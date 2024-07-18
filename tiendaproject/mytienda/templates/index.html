@@ -116,36 +116,31 @@
 
     <hr>
 
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
+
+        <div class="container py-3">
             <h2 class="text-center">Contáctanos</h2>
             <h5 class="text-center">Cualquier duda o problema con algún producto comprado, contáctanos.</h5>
             <form method="POST" action="{% url 'contacto_nuevo' %}" id="form" class="form">
 
                 {% csrf_token %}
-                <div class="field">
-                    <label for="nombre">Nombre</label>
+                <div class="field campo">
+                    <label class=" text_campo" for="nombre">Nombre</label>
                     <input type="text" class="form-control" name="nombre" id="nombre">
                 </div>
-                <div class="field">
-                    <label for="correo">Correo</label>
+                <div class="field campo">
+                    <label class=" text_campo" for="correo">Correo</label>
                     <input type="email" class="form-control" name="email" id="correo">
                 </div>
-                <div class="field">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea class="form-control" name="mensaje" id="mensaje"></textarea>
+                <div class="field campo">
+                    <label class=" text_campo" for="mensaje">Mensaje</label>
+                    <textarea class="form-control campo-formulario" name="mensaje" id="mensaje" rows="5"></textarea>
                 </div>
-                <section class="bg-stars">
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                </section>
+              
                 <br><br>
                 <input type="submit" id="button" class="btn btn-info" value="Enviar mensaje">
             </form>
         </div>
-    </section>
+    
 
     <footer class="bg-dark bg-body-tertiary text-white text-center py-3">
         <div class="container">

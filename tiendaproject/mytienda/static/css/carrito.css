@@ -23,6 +23,11 @@ body {
 .navbar {
     background-color: #122432;
 }
+
+.logo {
+    color: chartreuse;
+    width: 5%;
+}
 .container {
     max-width: 800px;
     margin: 0 auto;

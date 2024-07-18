@@ -110,9 +110,17 @@ LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
+USE_I10N = True
+
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGE =[
+    ('es', 'español'),
+    ('en', 'English'),
+    
+    ]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -145,15 +153,21 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 JAZZMIN_SETTINGS = {
 
-  "site_title": "felipe", # Título del sitio que aparece en la pestaña del navegador.
+  "site_title": "zapateria Sports", # Título del sitio que aparece en la pestaña del navegador.
 
   "site_header": "Panel de Administrador", # Encabezado del sitio en el panel de administración.
 
-  "site_brand": "sitio admin tienda", # Marca o nombre del sitio que aparece en la barra de navegación.
+  #titulo de login al regresar a la pagina de login
+    "site_login": "Iniciar Sesión",
+   
+  "site_brand": "Panel de Administrador", # Marca o nombre del sitio que aparece en la barra de navegación.
+
+    #logo de la tienda
+    "site_logo": "images/logo60.png",
 
   
 
-  "welcome_sign": "Bienvenido felipe ", # Mensaje de bienvenida que aparece en la página de inicio de sesión.
+  "welcome_sign": "Bienvenido ", # Mensaje de bienvenida que aparece en la página de inicio de sesión.
 
   "search_model": "auth.User", # Modelo utilizado para la búsqueda global en el panel de administración.
 
