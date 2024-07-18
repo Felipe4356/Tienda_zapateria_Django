@@ -1,0 +1,116 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/logoz.jpg' %}">
+    <title>detalles</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/detalle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white texto_logo" href="#"> <img src="{% static 'images/logoz.jpg' %}" alt="" style="width: 50px;">Zapatería <span class="logo">Sport</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="{% url 'index' %}">inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'lista_productos' %}">zapatillas</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a href="{% url 'ver_carrito' %}" class="text-white nav-link"><i
+                            class="fa-solid fa-cart-shopping"></i></a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'lista_productos' %}">Zapatillas</a></li>
+        <li class="breadcrumb-item" aria-current="page">zapatilla</li>
+    </ol>
+    <div class="container con_detalle py-5">
+        <h1 class="my-4 text-center">{{ producto.nombre }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ producto.image.url }}" alt="{{ producto.name }}" class="img-fluid product-image">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ producto.name }}</h2>
+                <p class="precio">Precio: ${{ producto.price }}</p>
+                <p class="stockk">Stock: {{ producto.stock }}</p>
+                <p class="carateristicas">Characteristics: {{ producto.characteristics }}</p>
+                <p>Categoría: {{ producto.category }}</p>
+
+                <!-- Mostrar mensajes de error -->
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- Formulario para agregar al carrito -->
+                <form action="{% url 'agregar_al_carrito' producto.id %}" method="post" class="mt-3 py-5">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+                </form>
+            </div>
+            <h3 class="text-center ">Descripción:</h3>
+            <p class="categoria py-5">{{ producto.description }}</p>
+        </div>
+    </div>
+    <footer class="bg-dark bg-body-tertiary text-white text-center py-5">
+        <div class="container py-4">
+            <br> 
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="m-0">Síguenos en nuestras redes sociales</p>
+                    <a href="#" class="text-white"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <!-- contactos -->
+               <div class="col-md-6">
+                <p class="m-0">Contáctos:</p> 
+                <p class="m-0">Teléfono: 123456789</p>
+                <p class="m-0">Email:zapateriaSports<P>
+
+               </div>
+
+                
+
+
+
+                
+              
+            </div>
+        </div>
+        <div class="col">
+            <p class="m-0">Todos los derechos reservados zapateria sport 2024</p>
+        </div>
+    </footer>
+    {% bootstrap_javascript %}
+</body>
+
+
+
+</html>
